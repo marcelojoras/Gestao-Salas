@@ -70,6 +70,33 @@
     </div>
    </form>
   </div>
+  <br>
+  <br>
+  <div class="container box">
+    <h3 align="center">Listagem de salas ({{$total}})</h3><br>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Localização</th>
+            <th>Reservada</th>            
+          </tr>
+        </thead>
+        <tbody>
+           @foreach($salas as $sala)  
+              <tr>
+                <td>{{$sala->id}}</td>
+                <td>{{$sala->name}}</td>
+                <td>{{$sala->localization}}</td>
+                <td>{{$sala->is_reserved}}</td>
+              </tr>
+           @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
  </body>
  @else
  <script>window.location = "/main";</script>

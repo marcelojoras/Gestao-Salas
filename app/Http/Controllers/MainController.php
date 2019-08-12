@@ -34,7 +34,9 @@ class MainController extends Controller
     }
 
     function successlogin(){
-    	return view('dashboard');
+        $salas = Sala::all();
+        $total = Sala::all()->count();
+    	return view('dashboard', compact('salas', 'total'));
     }
 
     function logout(){
