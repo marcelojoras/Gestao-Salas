@@ -61,4 +61,10 @@ class MainController extends Controller
         $sala->save();
         return back()->with('sala_criada', 'Sala criada com sucesso!');
     }
+
+    function deleteSala(Request $request){
+        $sala = Sala::findOrFail($request->id);
+        $sala->delete();
+        return back()->with('sala_criada', 'Sala deletada com sucesso!');
+    }
 }

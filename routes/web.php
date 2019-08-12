@@ -23,3 +23,5 @@ Route::post('/main/createSala', 'MainController@createSala');
 
 Route::get('main/dashboard', 'MainController@successlogin');
 Route::get('main/logout', 'MainController@logout');
+
+Route::post('main/deleteSala', 'MainController@deleteSala');

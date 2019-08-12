@@ -81,7 +81,8 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Localização</th>
-            <th>Reservada</th>            
+            <th>Reservada</th>
+            <th></th>     
           </tr>
         </thead>
         <tbody>
@@ -90,7 +91,20 @@
                 <td>{{$sala->id}}</td>
                 <td>{{$sala->name}}</td>
                 <td>{{$sala->localization}}</td>
-                <td>{{$sala->is_reserved}}</td>
+                <td>
+                  @if($sala->is_reserved == 'false')
+                    Não
+                  @else
+                    Sim
+                  @endif
+                </td>
+                <td>
+                  <form style="display: inline-block;" method="POST" action="{{ url('/main/deleteSala') }}" data-toggle="tooltip" data-placement="top" title="Excluir" onsubmit="return confirm('Confirma exclusão?')">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{$sala->id}}">                          
+                    <input type="submit" name="deletar" class="btn btn-primary" value="Deletar">
+                  </form>
+                </td>
               </tr>
            @endforeach
         </tbody>
