@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use App\User;
+use App\Sala;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -48,5 +49,14 @@ class MainController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return back()->with('user_criado', 'Usuário criado com sucesso! Faça login com ele');
+    }
+
+    function createSala(Request $request){
+        $sala = new Sala;
+        $sala->name = $request->name;
+        $sala->localization = $request->localization;
+        $sala->is_reserved = 'false';
+        $sala->save();
+        return back()->with('sala_criada', 'Sala criada com sucesso!');
     }
 }

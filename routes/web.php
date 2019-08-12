@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/main', 'MainController@index');
+
 Route::post('/main/checklogin', 'MainController@checklogin');
 Route::post('/main/createUser', 'MainController@createUser');
+Route::post('/main/createSala', 'MainController@createSala');
+
 Route::get('main/dashboard', 'MainController@successlogin');
 Route::get('main/logout', 'MainController@logout');

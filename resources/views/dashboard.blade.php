@@ -11,24 +11,67 @@
     margin:0 auto;
     border:1px solid #ccc;
    }
+   header{
+    width: 100%;
+    height: 80px;
+    background: #000;
+   }
+   .welcome{
+    color:#fff;
+    padding-top:25px;
+    width: 25%;
+    float: left;
+   }
   </style>
  </head>
+ @if(isset(Auth::user()->email))
  <body>
+  <header>
+    <div class="col-md-6">
+      <div class="welcome"><b>Bem vindo {{ Auth::user()->name }}</b></div>
+      <div class="welcome"><b><a style="color: #fff" href="{{ url('/main/logout') }}">| Logout</a></b></div>
+    </div>
+    <div class="col-md-6">
+      
+    </div>
+  </header>
   <br />
   <div class="container box">
-   <h3 align="center">Simple Login System in Laravel</h3><br />
-
-   @if(isset(Auth::user()->email))
-    <div class="success-block">
-     <strong>Welcome {{ Auth::user()->name }}</strong>
-     <br />
-     <a href="{{ url('/main/logout') }}">Logout</a>
+    @if (session('sala_criada'))
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" 
+           data-dismiss="alert"
+           aria-label="close">&times;</a>
+        {{ session('sala_criada') }}
     </div>
-   @else
-    <script>window.location = "/main";</script>
-   @endif
-   
-   <br />
+    @endif
+   <h3 align="center">Cadastrar Sala</h3><br />
+   <form method="post" action="{{ url('/main/createSala') }}">
+    {{ csrf_field() }}
+    <div class="col-md-6">              
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" name="name" 
+               class="form-control" 
+               required>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="description">Localização</label>
+        <input type="text" name="localization" 
+               class="form-control" 
+               required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+     <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar" />
+    </div>
+   </form>
   </div>
  </body>
+ @else
+ <script>window.location = "/main";</script>
+ @endif
 </html>
