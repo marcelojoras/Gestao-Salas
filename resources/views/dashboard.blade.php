@@ -45,6 +45,14 @@
         {{ session('sala_criada') }}
     </div>
     @endif
+    @if (session('error_sala'))
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" 
+           data-dismiss="alert"
+           aria-label="close">&times;</a>
+        {{ session('error_sala') }}
+    </div>
+    @endif
    <h3 align="center">Cadastrar Sala</h3><br />
    <form method="post" action="{{ url('/main/createSala') }}">
     {{ csrf_field() }}
@@ -83,7 +91,9 @@
             <th>Localização</th>
             <th>Reservada</th>
             <th></th> 
-            <th></th>    
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -107,11 +117,29 @@
                   </form>
                 </td>
                 <td>
-                  <form style="display: inline-block;" method="POST" action="{{ url('/main/alteraSala') }}" data-toggle="tooltip" data-placement="top" title="Excluir">
+                  <form style="display: inline-block;" method="POST" action="{{ url('/main/alteraSala') }}" data-toggle="tooltip" data-placement="top" title="Alterar">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$sala->id}}">                          
                     <input type="submit" name="alterar" class="btn btn-primary" value="Alterar">
                   </form>
+                </td>
+                <td>
+                  <form style="display: inline-block;" method="POST" action="{{ url('/main/reservarSala') }}" data-toggle="tooltip" data-placement="top" title="Reservar">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id_sala" value="{{$sala->id}}">
+                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">                        
+                    <input type="submit" name="alterar" class="btn btn-primary" value="Reservar">
+                  </form>
+                </td>
+                <td>
+                @if($sala->is_reserved == 'true' && Auth::user()->reserved_room == $sala->id)
+                  <form style="display: inline-block;" method="POST" action="{{ url('/main/retirarReserva') }}" data-toggle="tooltip" data-placement="top" title="Retirar Reserva">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id_sala" value="{{$sala->id}}">
+                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">                        
+                    <input type="submit" name="alterar" class="btn btn-danger" value="Retirar reserva">
+                  </form>
+                @endif
                 </td>
               </tr>
            @endforeach

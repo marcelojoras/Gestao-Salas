@@ -80,4 +80,34 @@ class MainController extends Controller
         $sala->save();
         return redirect(url('main/dashboard'))->with('sala_criada', 'Sala alterada com sucesso!');
     }
+
+    function reservarSala(Request $request){
+        $sala = Sala::findOrFail($request->id_sala);
+        $user = User::findOrFail($request->id_user);
+
+        if($user->reserved_room != null){
+            return back()->with('error_sala', 'Você já possui uma sala reservada!');
+        }
+
+        $sala->is_reserved = 'true';
+        $sala->save();
+
+        $user->reserved_room = $request->id_sala;
+        $user->save();
+
+        return back()->with('sala_criada', 'Sala reservada com sucesso!');
+    }
+
+    function retirarReserva(Request $request){
+        $sala = Sala::findOrFail($request->id_sala);
+        $user = User::findOrFail($request->id_user);
+
+        $sala->is_reserved = 'false';
+        $sala->save();
+
+        $user->reserved_room = null;
+        $user->save();
+
+        return back()->with('sala_criada', 'Reserva desfeita com sucesso!');
+    }
 }

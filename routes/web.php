@@ -27,3 +27,6 @@ Route::get('main/logout', 'MainController@logout');
 Route::post('main/deleteSala', 'MainController@deleteSala');
 Route::post('main/alteraSala', 'MainController@alteraSala');
 Route::post('main/alteraSalaBanco', 'MainController@alteraSalaBanco');
+
+Route::post('main/reservarSala', 'MainController@reservarSala');
+Route::post('main/retirarReserva', 'MainController@retirarReserva');
