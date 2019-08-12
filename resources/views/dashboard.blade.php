@@ -7,7 +7,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
    .box{
-    width:600px;
+    width:800px;
     margin:0 auto;
     border:1px solid #ccc;
    }
@@ -82,7 +82,8 @@
             <th>Nome</th>
             <th>Localização</th>
             <th>Reservada</th>
-            <th></th>     
+            <th></th> 
+            <th></th>    
           </tr>
         </thead>
         <tbody>
@@ -103,6 +104,13 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$sala->id}}">                          
                     <input type="submit" name="deletar" class="btn btn-primary" value="Deletar">
+                  </form>
+                </td>
+                <td>
+                  <form style="display: inline-block;" method="POST" action="{{ url('/main/alteraSala') }}" data-toggle="tooltip" data-placement="top" title="Excluir">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{$sala->id}}">                          
+                    <input type="submit" name="alterar" class="btn btn-primary" value="Alterar">
                   </form>
                 </td>
               </tr>

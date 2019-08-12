@@ -7,7 +7,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
    .box{
-    width:600px;
+    width:800px;
     margin:0 auto;
     border:1px solid #ccc;
    }
@@ -19,7 +19,7 @@
    <h3 align="center">Login</h3><br />
 
    @if(isset(Auth::user()->email))
-    <script>window.location="/main/successlogin";</script>
+    <script>window.location="/main/dashboard";</script>
    @endif
 
    @if ($message = Session::get('error'))

@@ -67,4 +67,17 @@ class MainController extends Controller
         $sala->delete();
         return back()->with('sala_criada', 'Sala deletada com sucesso!');
     }
+
+    function alteraSala(Request $request){
+        $sala = Sala::findOrFail($request->id);
+        return view('alter-sala', compact('sala'));
+    }
+
+    function alteraSalaBanco(Request $request){
+        $sala = Sala::findOrFail($request->id);
+        $sala->name = $request->name;
+        $sala->localization = $request->localization;
+        $sala->save();
+        return redirect(url('main/dashboard'))->with('sala_criada', 'Sala alterada com sucesso!');
+    }
 }

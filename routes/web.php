@@ -25,3 +25,5 @@ Route::get('main/dashboard', 'MainController@successlogin');
 Route::get('main/logout', 'MainController@logout');
 
 Route::post('main/deleteSala', 'MainController@deleteSala');
+Route::post('main/alteraSala', 'MainController@alteraSala');
+Route::post('main/alteraSalaBanco', 'MainController@alteraSalaBanco');
