@@ -123,6 +123,7 @@
                     <input type="submit" name="alterar" class="btn btn-primary" value="Alterar">
                   </form>
                 </td>
+                @if($sala->is_reserved == 'false')
                 <td>
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/reservarSala') }}" data-toggle="tooltip" data-placement="top" title="Reservar">
                     {{ csrf_field() }}
@@ -131,6 +132,7 @@
                     <input type="submit" name="alterar" class="btn btn-primary" value="Reservar">
                   </form>
                 </td>
+                @endif
                 <td>
                 @if($sala->is_reserved == 'true' && Auth::user()->reserved_room == $sala->id)
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/retirarReserva') }}" data-toggle="tooltip" data-placement="top" title="Retirar Reserva">
