@@ -32,14 +32,14 @@
       <div class="welcome"><b><a style="color: #fff" href="{{ url('/main/logout') }}">| Logout</a></b></div>
     </div>
     <div class="col-md-6">
-      
+
     </div>
   </header>
-  <br />
+  <br>
   <div class="container box">
     @if (session('sala_criada'))
     <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" 
+        <a href="#" class="close"
            data-dismiss="alert"
            aria-label="close">&times;</a>
         {{ session('sala_criada') }}
@@ -47,34 +47,34 @@
     @endif
     @if (session('error_sala'))
     <div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" 
+        <a href="#" class="close"
            data-dismiss="alert"
            aria-label="close">&times;</a>
         {{ session('error_sala') }}
     </div>
     @endif
-   <h3 align="center">Cadastrar Sala</h3><br />
+   <h3 align="center">Cadastrar Sala</h3><br>
    <form method="post" action="{{ url('/main/createSala') }}">
     {{ csrf_field() }}
-    <div class="col-md-6">              
+    <div class="col-md-6">
       <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" name="name" 
-               class="form-control" 
+        <input type="text" name="name"
+               class="form-control"
                required>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="description">Localização</label>
-        <input type="text" name="localization" 
-               class="form-control" 
+        <input type="text" name="localization"
+               class="form-control"
                required>
       </div>
     </div>
     <br>
     <div class="form-group">
-     <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar" />
+     <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar">
     </div>
    </form>
   </div>
@@ -90,14 +90,14 @@
             <th>Nome</th>
             <th>Localização</th>
             <th>Reservada</th>
-            <th></th> 
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-           @foreach($salas as $sala)  
+           @foreach($salas as $sala)
               <tr>
                 <td>{{$sala->id}}</td>
                 <td>{{$sala->name}}</td>
@@ -112,14 +112,14 @@
                 <td>
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/deleteSala') }}" data-toggle="tooltip" data-placement="top" title="Excluir" onsubmit="return confirm('Confirma exclusão?')">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{$sala->id}}">                          
+                    <input type="hidden" name="id" value="{{$sala->id}}">
                     <input type="submit" name="deletar" class="btn btn-primary" value="Deletar">
                   </form>
                 </td>
                 <td>
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/alteraSala') }}" data-toggle="tooltip" data-placement="top" title="Alterar">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{$sala->id}}">                          
+                    <input type="hidden" name="id" value="{{$sala->id}}">
                     <input type="submit" name="alterar" class="btn btn-primary" value="Alterar">
                   </form>
                 </td>
@@ -128,7 +128,7 @@
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/reservarSala') }}" data-toggle="tooltip" data-placement="top" title="Reservar">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_sala" value="{{$sala->id}}">
-                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">                        
+                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
                     <input type="submit" name="alterar" class="btn btn-primary" value="Reservar">
                   </form>
                 </td>
@@ -138,7 +138,7 @@
                   <form style="display: inline-block;" method="POST" action="{{ url('/main/retirarReserva') }}" data-toggle="tooltip" data-placement="top" title="Retirar Reserva">
                     {{ csrf_field() }}
                     <input type="hidden" name="id_sala" value="{{$sala->id}}">
-                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">                        
+                    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
                     <input type="submit" name="alterar" class="btn btn-danger" value="Retirar reserva">
                   </form>
                 @endif

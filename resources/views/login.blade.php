@@ -14,9 +14,9 @@
   </style>
  </head>
  <body>
-  <br />
+  <br>
   <div class="container box">
-   <h3 align="center">Login</h3><br />
+   <h3 align="center">Login</h3><br>
 
    @if(isset(Auth::user()->email))
     <script>window.location="/main/dashboard";</script>
@@ -41,7 +41,7 @@
 
    @if (session('user_criado'))
     <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" 
+        <a href="#" class="close"
            data-dismiss="alert"
            aria-label="close">&times;</a>
         {{ session('user_criado') }}
@@ -52,51 +52,51 @@
     {{ csrf_field() }}
     <div class="form-group">
      <label>Email</label>
-     <input type="email" name="email" class="form-control" />
+     <input type="email" name="email" class="form-control">
     </div>
     <div class="form-group">
      <label>Senha</label>
-     <input type="password" name="password" class="form-control" />
+     <input type="password" name="password" class="form-control">
     </div>
     <div class="form-group">
-     <input type="submit" name="login" class="btn btn-primary" value="Login" />
+     <input type="submit" name="login" class="btn btn-primary" value="Login">
     </div>
    </form>
   </div>
   <br>
   <br>
   <div class="container box">
-   <h3 align="center">Cadastro</h3><br />
+   <h3 align="center">Cadastro</h3><br>
 
    <form method="post" action="{{ url('/main/createUser') }}">
     {{ csrf_field() }}
-    <div class="col-md-6">              
+    <div class="col-md-6">
       <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" name="name" 
-               class="form-control" 
+        <input type="text" name="name"
+               class="form-control"
                required>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="description">E-mail</label>
-        <input type="email" name="email" 
-               class="form-control" 
+        <input type="email" name="email"
+               class="form-control"
                required>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="quantity">Senha</label>
-        <input type="password" name="password" 
-               class="form-control" 
+        <input type="password" name="password"
+               class="form-control"
                required>
-      </div>    
+      </div>
     </div>
     <br>
     <div class="form-group">
-     <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar" />
+     <input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar">
     </div>
    </form>
   </div>

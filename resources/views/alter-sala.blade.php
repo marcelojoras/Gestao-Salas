@@ -32,26 +32,26 @@
       <div class="welcome"><b><a style="color: #fff" href="{{ url('/main/logout') }}">| Logout</a></b></div>
     </div>
     <div class="col-md-6">
-      
+
     </div>
   </header>
-  <br />
+  <br>
   <div class="container box">
    <h3 align="center">Alterar Sala "{{$sala->name}}"</h3><br>
    <form method="post" action="{{ url('/main/alteraSalaBanco') }}">
     {{ csrf_field() }}
-    <div class="col-md-6">              
+    <div class="col-md-6">
       <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" name="name" 
-               class="form-control" value="{{$sala->name}}" 
+        <input type="text" name="name"
+               class="form-control" value="{{$sala->name}}"
                required>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="description">Localização</label>
-        <input type="text" name="localization" 
+        <input type="text" name="localization"
                class="form-control" value="{{$sala->localization}}"
                required>
       </div>
